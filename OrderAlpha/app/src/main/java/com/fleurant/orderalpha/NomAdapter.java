@@ -11,6 +11,8 @@ import android.widget.Toast;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 public class NomAdapter extends RecyclerView.Adapter<NomAdapter.ViewHolder> {
 
@@ -97,7 +99,12 @@ public class NomAdapter extends RecyclerView.Adapter<NomAdapter.ViewHolder> {
         return localDataSet.size();
     }
 
-    public static void EstEnOrdre(View view){
-        Toast.makeText(view.getContext(),"BRAVO !", Toast.LENGTH_LONG).show();
+    public void EstEnOrdre(View view){
+        List<String> solution = new ArrayList<>(localDataSet);
+        Collections.sort(solution);
+        if(solution.equals(localDataSet))
+        {
+            Toast.makeText(view.getContext(),"BRAVO !", Toast.LENGTH_LONG).show();
+        }
     }
 }
