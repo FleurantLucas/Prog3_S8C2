@@ -14,6 +14,8 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
+import java.util.Random;
+
 public class NomAdapter extends RecyclerView.Adapter<NomAdapter.ViewHolder> {
 
     public static List<String> localDataSet;
@@ -104,7 +106,21 @@ public class NomAdapter extends RecyclerView.Adapter<NomAdapter.ViewHolder> {
         Collections.sort(solution);
         if(solution.equals(localDataSet))
         {
+            RandomiseLaListe();
             Toast.makeText(view.getContext(),"BRAVO !", Toast.LENGTH_LONG).show();
         }
+    }
+
+    public void RandomiseLaListe()
+    {
+        List<String> laliste = new ArrayList<>(localDataSet);
+        for (String nom:localDataSet
+             ) {
+            int nombre = new Random().nextInt(4);
+            laliste.remove(nom);
+            laliste.add(nombre,nom);
+        }
+        localDataSet = laliste;
+        notifyDataSetChanged();
     }
 }
